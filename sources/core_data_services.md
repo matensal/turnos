@@ -1,7 +1,7 @@
 # Core Data Services (CDS)
 - [Core Data Services (CDS)](#core-data-services-cds)
   - [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
-    - [ZBP_SRAP_I_MUELLES anotaciones](#ZBP_SRAP_I_MUELLES_anot) 
+    - [ZBP_SRAP_I_MUELLES anotaciones](#ZBP_SRAP_I_MUELLES_ANOT) 
   - [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
     - [ZSRAP_C_TURNOS anotaciones](#ZSRAP_C_TURNOS_ANOT) 
   - [ZSRAP_I_CLIENTES](#ZSRAP_I_CLIENTES)
@@ -109,7 +109,7 @@ association to parent ZSRAP_I_MUELLES as _Muelles
     _Muelles  // Make association public
 }
 </pre>
-## [ZSRAP_C_TURNOS](#ZSRAP_C_TURNOS_anot)
+## [ZSRAP_C_TURNOS](#ZSRAP_C_TURNOS_ANOT)
 Anotaciones para la cds [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
 
 <pre>
