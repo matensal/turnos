@@ -1,21 +1,21 @@
 # Core Data Services (CDS)
 - [Core Data Services (CDS)](#core-data-services-cds)
   - [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
-    - [ZBP_SRAP_I_MUELLES anotaciones](#ZBP_SRAP_I_MUELLES_ANOT) 
+    - [ZBP_SRAP_I_MUELLES anotaciones](#ZSRAP_C_MUELLES_ANOTACIONES) 
   - [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
-    - [ZSRAP_C_TURNOS anotaciones](#ZSRAP_C_TURNOS_ANOT) 
+    - [ZSRAP_C_TURNOS anotaciones](#ZSRAP_C_TURNOS_ANOTACIONES) 
   - [ZSRAP_I_CLIENTES](#ZSRAP_I_CLIENTES)
   - [ZSRAP_PV_I_PEDIDOS](#ZSRAP_PV_I_PEDIDOS)
 
   - [ZSRAP_ASIGNA_PEDIDO](#ZSRAP_ASIGNA_PEDIDO) - CDS Abstracta
-    - [ZSRAP_ASIGNA_PEDIDO anotaciones](#ZSRAP_ASIGNA_PEDIDO_anot) 
+    - [ZSRAP_ASIGNA_PEDIDO anotaciones](#ZSRAP_ASIGNA_PEDIDO_ANOTACIONES) 
   - [ZSRAP_CREA_TURNOS](#ZSRAP_CREA_TURNOS) - CDS Abstracta
-    - [ZSRAP_CREA_TURNOS anotaciones](#ZSRAP_CREA_TURNOS_anot)
+    - [ZSRAP_CREA_TURNOS anotaciones](#ZSRAP_CREA_TURNOS_ANOTACIONES)
 
 
 
   
-## [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
+## [ZBP_SRAP_I_MUELLES](#core-data-services-cds)
 CDS que representa el Business Object (BO) root de la aplicación. Selección principal de los datos de la tabla [zrap_pv_muelles](diccionario_datos.md/#zrap_pv_muelles).
 <pre>
 @AccessControl.authorizationCheck: #CHECK
@@ -29,7 +29,7 @@ composition [0..*] of ZSRAP_I_TURNOS as _Turnos
     _Turnos // Make association public
 }
 </pre>
-## [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES_ANOT)
+## [ZSRAP_C_MUELLES_ANOTACIONES](#core-data-services-cds)
 Anotaciones para la cds [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
 
 <pre>
@@ -90,7 +90,7 @@ annotate view ZSRAP_C_MUELLES with
 
 
 
-## [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
+## [ZSRAP_I_TURNOS](#core-data-services-cds)
 Selección de datos de la tabla [zrap_pv_turnos](diccionario_datos.md/#zrap_pv_turnos).
 
 <pre>
@@ -109,7 +109,7 @@ association to parent ZSRAP_I_MUELLES as _Muelles
     _Muelles  // Make association public
 }
 </pre>
-## [ZSRAP_C_TURNOS](#ZSRAP_C_TURNOS_ANOT)
+## [ZSRAP_C_TURNOS_ANOTACIONES](#core-data-services-cds)
 Anotaciones para la cds [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
 
 <pre>
@@ -169,7 +169,7 @@ annotate view ZSRAP_C_TURNOS with
 
 }
 </pre>
-## [ZSRAP_I_CLIENTES](#ZSRAP_I_CLIENTES)
+## [ZSRAP_I_CLIENTES](#core-data-services-cds)
 Selección de datos de pedidos por cliente.
 
 <pre>
@@ -437,7 +437,7 @@ define root view entity ZSRAP_I_CLIENTES
 }
 </pre>
 
-## [ZSRAP_PV_I_PEDIDOS](#ZSRAP_PV_I_PEDIDOS)
+## [ZSRAP_PV_I_PEDIDOS](#core-data-services-cds)
 
 <pre>
 @AbapCatalog.viewEnhancementCategory: [#NONE]
@@ -468,7 +468,7 @@ define view entity Zsrap_pv_i_pedidos
 </pre>
 
 
-## [ZSRAP_ASIGNA_PEDIDO](#ZSRAP_ASIGNA_PEDIDO)
+## [ZSRAP_ASIGNA_PEDIDO](#core-data-services-cds)
 CDS Abstracta se utiliza como parámetros en la acción de asignación del pedido.
 
 <pre>
@@ -482,7 +482,7 @@ define abstract entity ZSRAP_ASIGNA_PEDIDO
 }
 </pre>
 
-## [ZSRAP_ASIGNA_PEDIDO](#ZSRAP_ASIGNA_PEDIDO)
+## [ZSRAP_ASIGNA_PEDIDO_ANOTACIONES](#core-data-services-cds)
 Anotación CDS Abstracta [ZSRAP_ASIGNA_PEDIDO](#ZSRAP_ASIGNA_PEDIDO)
 
 <pre>
@@ -496,7 +496,7 @@ annotate entity ZSRAP_ASIGNA_PEDIDO with
 }
 </pre>
 
-## [ZSRAP_CREA_TURNOS](#ZSRAP_CREA_TURNOS)
+## [ZSRAP_CREA_TURNOS](#core-data-services-cds)
 CDS Abstracta se utiliza como parámetros en la acción de asignación del pedido.
 
 <pre>
@@ -516,7 +516,7 @@ define abstract entity ZSRAP_CREA_TURNOS
 }
 </pre>
 
-## [ZSRAP_CREA_TURNOS](#ZSRAP_CREA_TURNOS_anot)
+## [ZSRAP_CREA_TURNOS_ANOTACIONES](#core-data-services-cds)
 Anotación CDS Abstracta [ZSRAP_CREA_TURNOS](#ZSRAP_CREA_TURNOS)
 
 <pre>

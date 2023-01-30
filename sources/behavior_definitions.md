@@ -1,17 +1,25 @@
 # Behavior definitions
 - [Behavior definitions](#behavior-definitions)
-  - [ZSRAP_I_MUELLES](#ZSRAP_I_MUELLES)
+  - [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES)
     - [Acciones](#acciones)
+      - [popupFecha](#popupFecha)
+      - [popupPedido](#popupPedido)
     - [Determinaciones](#determinaciones)
-      - [onModifyCreate](#onmodifycreate)
+      - [setIdMuelle](#setIdMuelle)
     - [Validaciones](#validaciones)
-      - [validateHoras](#validatehoras) 
-      - [validateFecha](#validatefecha)
+      - [validaMuelle](#validaMuelle) 
+      - [validaFecha](#validaFecha)
   - [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES) Proyección
   
-## [ZSRAP_I_MUELLES](#ZSRAP_I_MUELLES)
-Behavior managed implementado en la clase [ZBP_SRAP_I_MUELLES](definicion_clases.md/#ZBP_SRAP_I_MUELLES).
+## [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES)
+Behavior managed implementado en la clase [ZBP_SRAP_I_MUELLES](definicion_clases.md/#ZBP_SRAP_I_MUELLES). Al utilizar borradores hemos de añadir la acción ***with draft*** a las asociación tanto del padre como del hijo.
 
+<pre>
+association _Turnos { create; with draft; }
+association _Muelles { with draft; }
+</pre>
+
+Contenido completo del behavior
 <pre>
 managed implementation in class zbp_srap_i_muelles unique;
 //strict;
@@ -32,7 +40,6 @@ authorization master ( instance )
   field ( mandatory ) Codigo;
 
   action ( features : instance ) popupFecha parameter ZSRAP_CREA_TURNOS result [1] $self; //Para actualiar
-  static factory action  borrar  [1]; //Para añadir
 
   determination setIdMuelle on modify { create; } //Cuando se modifica la entidad
   validation validaMuelle on save { field Codigo; create; }
@@ -61,7 +68,7 @@ authorization dependent by _Muelles
   field ( numbering : managed ) Turnoid;
 
   action ( features : instance ) popupPedido parameter ZSRAP_ASIGNA_PEDIDO result [1] $self;
-  action ( features : instance ) popupCrea parameter zsrap_crea_turnos result [1] $self;
+
   validation validaFecha on save { field Anyo, Dia, Hora; create; }
   association _Muelles { with draft; }
 
@@ -79,25 +86,29 @@ authorization dependent by _Muelles
 </pre>
 
 ### [Acciones](#acciones)
-Las acciones `update` y `delete` dependen de la instancia seleccionada. Al añadir `( features : instance )` nos permite determinar si la acción estará habilitada o no. Esta determinación se define en la clase [ZBP_SRAP_I_RAPPORTS](definicion_clases.md/#zbp_srap_i_rapports) en el metodo `GET_FEATURES`. En este caso hemos implementado que si el rapport es del mes anterior, no se pueda modificar ni eliminar. 
+Las acciones `update` y `delete` dependen de la instancia seleccionada.  
+#### [popupFecha](#behavior-definitions)
+Esta acción nos permite crear turnos de forma automática a partir de unos parametros de entrada selecconados y eliminar los que ya existen. Tiene un parametro de entrada que es la CDS abstracta [ZSRAP_CREA_TURNOS](core_data_services.md/#zsrap_crea_turnos).<br>
+![Popup Fecha](../images/crear_intervalos.png)
+
+#### [popupPedido](#behavior-definitions)
+Esta acción nos permite asignar un pedido de venta al turno seleccionado. Se utiliza un parametro de entrada el cual nos muestra un popup en el cual podemos seleccionar el pedido usando una ayuda de búsqueda. Para ello utilizamos la CDS abstracta [ZSRAP_ASIGNA_PEDIDO](core_data_services.md/#zsrap_asigna_pedido).<br>
+![Popup Pedido](../images/asigna_pedido_1.png)
+![Popup Ayuda Pedido Venta](../images/asigna_pedido_2.png)
+
 ### [Determinaciones](#determinaciones)
-#### [onModifyCreate](#onModifyCreate)
-Definimos la determinación on `onModifyCreate` implementada en la clase [ZBP_SRAP_I_RAPPORTS](definicion_clases.md/#zbp_srap_i_rapports) en el método `onmodifycreate`. Se ejecutara cuando entremos a crear el objeto y nos servirá para añadir un valor por defecto en el campo `Fecha`.
+#### [setIdMuelle](#behavior-definitions)
+Determinamos un valor paracuando se crea la entidad así por defecto rellenamos los campos Código y Nombre del Muelle
 <pre>
-determination onModifyCreate on modify { create; }
+ determination setIdMuelle on modify { create; } //Cuando se modifica la entidad
 </pre>
 
 ### [Validaciones](#validaciones)
-#### [validateHoras](#validateHoras)
-Implementada en la clase [ZBP_SRAP_I_RAPPORTS](definicion_clases.md/#zbp_srap_i_rapports) en el método `validateHoras`. Validación que se ejecuta al crear y actualizar sobre los campos `HoraInicio` y `HoraFin`. Valida que la hora de inicio no sea superior a la hora de fin.
-<pre>
-validation validateHoras on save { field HoraInicio, HoraFin; create; update; }
-</pre>
-#### [validateFecha](#validateFecha)
-Implementada en la clase [ZBP_SRAP_I_RAPPORTS](definicion_clases.md/#zbp_srap_i_rapports) en el método `validateFecha`. Validación que se ejecuta al crear y actualizar sobre el campo `Fecha`. Valida que la fecha no esté vacía.
-<pre>
-validation validateFecha on save { field Fecha; create; update; }
-</pre>
+#### [validaMuelle](#validaMuelle)
+Esta validación se realiza sobre el campo Codigo de la entidad y evita que se dupliquen los códigos de los muelles.
+
+#### [validaFecha](#validaFecha)
+Esta validación comprueba que los campos Anyo, Dia, Hora al crear una instancia nueva no se cree anterior a la fecha actual.
 
 ## [ZSRAP_C_RAPPORTS](#zsrap_c_rapports)
 Proyección del behavior [ZSRAP_I_MUELLES](#ZSRAP_I_MUELLES)

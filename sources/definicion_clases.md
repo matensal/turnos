@@ -23,8 +23,6 @@ CLASS lhc_ZSRAP_I_MUELLES DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys REQUEST requested_features FOR zsrap_i_muelles RESULT result.
     METHODS popupfecha FOR MODIFY
       IMPORTING keys FOR ACTION zsrap_i_muelles~popupfecha RESULT result.
-    METHODS borrar FOR MODIFY
-      IMPORTING keys FOR ACTION zsrap_i_muelles~borrar.
 
 
 ENDCLASS.
@@ -258,8 +256,6 @@ CLASS lhc_ZSRAP_I_MUELLES IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD borrar.
-  ENDMETHOD.
 
 ENDCLASS.
 
@@ -276,9 +272,7 @@ CLASS lhc_ZSRAP_I_TURNOS DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS get_instance_features FOR INSTANCE FEATURES
       IMPORTING keys REQUEST requested_features FOR zsrap_i_turnos RESULT result.
-    METHODS popupcrea FOR MODIFY
-      IMPORTING keys FOR ACTION zsrap_i_turnos~popupcrea RESULT result.
-
+   
 ENDCLASS.
 
 CLASS lhc_ZSRAP_I_TURNOS IMPLEMENTATION.
@@ -396,33 +390,6 @@ CLASS lhc_ZSRAP_I_TURNOS IMPLEMENTATION.
 
 
   ENDMETHOD.
-
-  METHOD popupCrea.
-    READ ENTITIES OF zsrap_i_muelles IN LOCAL MODE
-           ENTITY zsrap_i_turnos
-           ALL FIELDS WITH CORRESPONDING #( keys )
-           RESULT DATA(result1).
-
-    MODIFY ENTITY zsrap_i_turnos
-    CREATE
-    AUTO FILL CID FIELDS ( Anyo Dia Hora )
-    WITH VALUE #( ( %is_draft = keys[ 1 ]-%is_draft
-                                              Anyo = '2023'
-                                              Dia = '20230201'
-                                              Hora = '133300'
-                                              %control = VALUE #(
-                                                                  Anyo = if_abap_behv=>mk-on
-                                                                  Dia = if_abap_behv=>mk-on
-                                                                  Hora = if_abap_behv=>mk-on )
-                                                                ) )
-        FAILED DATA(create_failed_2)
-        MAPPED DATA(create_mapped_2)
-        REPORTED DATA(create_reported_2).
-
-    "Refrescamos la entidad en el navegador el Update no lo refresca si no refrescamos la página
-    result = VALUE #( FOR res IN result1 ( %tky = res-%tky
-                                                  %param = res ) ).
-  ENDMETHOD.
-
+  
 ENDCLASS.
 </pre>
