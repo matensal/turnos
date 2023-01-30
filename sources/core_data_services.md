@@ -3,7 +3,7 @@
   - [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
     - [ZBP_SRAP_I_MUELLES anotaciones](#ZBP_SRAP_I_MUELLES_anot) 
   - [ZSRAP_I_TURNOS](#ZSRAP_I_TURNOS)
-    - [ZSRAP_C_TURNOS anotaciones](#ZSRAP_C_TURNOS_anot) 
+    - [ZSRAP_C_TURNOS anotaciones](#ZSRAP_C_TURNOS_ANOT) 
   - [ZSRAP_I_CLIENTES](#ZSRAP_I_CLIENTES)
   - [ZSRAP_PV_I_PEDIDOS](#ZSRAP_PV_I_PEDIDOS)
 
@@ -29,7 +29,7 @@ composition [0..*] of ZSRAP_I_TURNOS as _Turnos
     _Turnos // Make association public
 }
 </pre>
-## [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES_anot)
+## [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES_ANOT)
 Anotaciones para la cds [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
 
 <pre>

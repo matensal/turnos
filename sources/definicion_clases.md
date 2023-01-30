@@ -2,11 +2,11 @@
 # Definición de clases
 - [Definición de clases](#definición-de-clases)
   - [Behavior](#behavior)
-    - [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
+    - [ZBP_SRAP_I_MUELLES](#zbp_srap_i_muelles) 
 
 
 ## [Behavior](#behavior)
-### [ZBP_SRAP_I_MUELLES](#ZBP_SRAP_I_MUELLES)
+### [ZBP_SRAP_I_MUELLES](#zbp_srap_i_muelles)
 <pre>
 CLASS lhc_ZSRAP_I_MUELLES DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.

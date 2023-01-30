@@ -5,7 +5,7 @@
     - [Determinaciones](#determinaciones)
       - [onModifyCreate](#onmodifycreate)
     - [Validaciones](#validaciones)
-      - [validateHoras](#validatehoras)
+      - [validateHoras](#validatehoras) 
       - [validateFecha](#validatefecha)
   - [ZSRAP_C_MUELLES](#ZSRAP_C_MUELLES) Proyección
   

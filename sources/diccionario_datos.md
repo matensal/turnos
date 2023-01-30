@@ -5,7 +5,7 @@ Para este desarrollo necesitaremos una tabla para Muelles y otra para turnos. <b
 La tabla para muelles será [ZRAP_PV_MUELLES](#ZRAP_PV_MUELLES) y su homóloga para el borrador [ZRAP_D_MUELLES](#ZRAP_D_MUELLES). <br>
 Un muelle puede tener varios turnos para la carga, en este caso como tenemos habilitado el draft necesitamos dos tablas [ZRAP_PV_TURNOS](#ZRAP_PV_TURNOS) será en la que se almacenan los datos y [ZRAP_D_TURNOS](#ZRAP_D_TURNOS) se utiliza para el draft.
 
-### [ZRAP_PV_MUELLES](#ZRAP_PV_MUELLES)
+### [ZRAP_PV_MUELLES](#ZRAP_PV_MUELLES) 
 Tabla que representa el Business Object (BO) root de la aplicación y almacena los datos relacuinado con los muelles.
 
 <pre>
